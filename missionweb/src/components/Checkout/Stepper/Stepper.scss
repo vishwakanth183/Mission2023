@@ -1,0 +1,63 @@
+/* Using SCSS variables to store breakpoints */
+$breakpoint-tablet: 768px;
+$appFont : 'Montserrat', sans-serif;
+
+.stepperFullView {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    // width: 97.4vw;
+    width: auto;
+    height: 94.4vh;
+    padding: 20px;
+
+    @media (max-width: $breakpoint-tablet) {
+        background-color: white;
+        flex-direction: column;
+        width: auto;
+        padding: 20px;
+        height: auto;
+    }
+
+}
+
+.leftView {
+    width: 60%;
+    height: 100%;
+    background-color: aqua;
+    border: 1px solid #ddd;
+    box-shadow: 2px 5px 5px 2px #ddd;
+
+    @media (max-width: $breakpoint-tablet) {
+        width: 98%;
+        height: 50vh;
+        min-height: 50%;
+    }
+
+}
+
+.rightView {
+    width: 40%;
+    max-height: 100%;
+    margin-left: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 5px 5px 2px #ddd;
+    background-color: white;
+    padding: 20px;
+
+    @media (max-width: $breakpoint-tablet) {
+        display: flex;
+        flex-direction: column;
+        width: 89%;
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+}
+
+.stepperView{
+    font-family: $appFont;
+    @media (max-width : $breakpoint-tablet){
+        display: flex;
+        min-height: 300px;
+    }
+}

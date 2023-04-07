@@ -1,0 +1,72 @@
+$appFont : 'Montserrat',
+sans-serif;
+$breakpoint-tablet: 768px;
+
+.cartSummaryView {
+    width: 100%;
+    margin-top: 50px;
+
+    @media (max-width: $breakpoint-tablet)
+    {
+        margin-top: 0px;
+    }
+}
+
+.titleText {
+    font-weight: bold;
+    font-size: large;
+    font-family: $appFont;
+}
+
+.justifyBetweenView {
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftText {
+    font-size: medium;
+    font-family: $appFont;
+}
+
+.rightText {
+    @extend .leftText;
+    font-weight: bold;
+}
+
+.lightTopPadding {
+    padding-top: 10px;
+}
+
+.mediumTopPadding {
+    padding-top: 30px;
+}
+
+.summaryDivider{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.couponView{
+    margin-top: 20px;
+}
+
+.couponInput{
+    font-family: $appFont;
+}
+
+.applyCoupon{
+    @extend .couponInput;
+    background-color: black;
+    color: white;
+}
+
+.ant-input{
+    @extend .couponInput
+}
+
+.ant-input:hover{
+    border-color: lightblue;
+}
+.ant-input:focus{
+    border-color: lightblue;
+}
