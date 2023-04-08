@@ -10,7 +10,8 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { appColors } from '../../../shared/appcolors';
 import { StepButton, Typography } from '@mui/material';
 import { appFonts } from '../../../shared/appFonts';
-// import CartSummary from '../CartSummary/cartSummary';
+import CartSummary from '../CartSummary/cartSummary';
+import Cart from '../Cart/cart';
 
 
 function StepperComponent(props) {
@@ -36,8 +37,8 @@ function StepperComponent(props) {
     ]
 
     // Variable to handle onChange stepper
-    const onChange = (value) => {
-        console.log('onChange:', value);
+    const onChangeStepper = (value) => {
+        console.log("Val",value)
         setCurrentStepper(value);
     };
 
@@ -46,19 +47,21 @@ function StepperComponent(props) {
 
             {/* left scetion */}
             <div className='leftView'>
-
+                <Cart />
             </div>
 
             {/* Right Section */}
             <div className='rightView'>
 
                 {/* Stepper section */}
-                <Stepper nonLinear activeStep={activeStepper} onChange={onChange}>
+                <Stepper nonLinear activeStep={activeStepper}>
                     {
                         lables.map((item, currentIndex) => {
                             return <Step key={currentIndex} completed={currentIndex <= activeStepper}>
-                                <StepButton icon={item.icon(currentIndex <= activeStepper)} color="inherit" sx={{ fontFamily: 'cursive' }} className='stepperButton'>
-                                    <Typography sx={{fontFamily : appFonts.montserrat}} variant="caption">{item.name}</Typography>
+                                <StepButton icon={item.icon(currentIndex <= activeStepper)} color="inherit"  onClick={()=>onChangeStepper(currentIndex)}>
+                                    <Typography sx={{ fontFamily: appFonts.montserrat, fontWeight: 'bold' , color : currentIndex <= activeStepper ? appColors.lightGreen : appColors.grey }} variant="body2">
+                                        {item.name}
+                                    </Typography>
                                 </StepButton>
                             </Step>
                         })
@@ -67,7 +70,7 @@ function StepperComponent(props) {
 
                 <div>
                     <Routes>
-                        {/* <Route path=':cart' element={<CartSummary />} /> */}
+                        <Route path=':cart' element={<CartSummary />} />
                     </Routes>
                 </div>
 

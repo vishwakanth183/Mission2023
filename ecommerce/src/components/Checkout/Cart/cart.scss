@@ -1,0 +1,21 @@
+.fullWidth{
+    width: 100%;
+}
+
+.instructionButton{
+    cursor: pointer;
+}
+
+.instructionButton:active{
+    opacity: 0.4;
+}
+
+.columnView{
+    display: flex;
+    flex-direction: column;
+}
+
+.cartImg{
+    height: 150px;
+    width: 150px;
+}
