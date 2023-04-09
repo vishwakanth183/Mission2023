@@ -12,6 +12,7 @@ import { StepButton, Typography } from '@mui/material';
 import { appFonts } from '../../../shared/appFonts';
 import CartSummary from '../CartSummary/cartSummary';
 import Cart from '../Cart/cart';
+import Delivery from '../Delivery/delivery';
 
 
 function StepperComponent(props) {
@@ -70,7 +71,8 @@ function StepperComponent(props) {
 
                 <div>
                     <Routes>
-                        <Route path=':cart' element={<CartSummary />} />
+                        {/* <Route path=':cart' element={<CartSummary />} /> */}
+                        <Route path=':cart' element={<Delivery />} />
                     </Routes>
                 </div>
 

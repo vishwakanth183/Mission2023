@@ -1,0 +1,33 @@
+// @import 'cartSummary';
+$breakpoint-tablet: 768px;
+
+.deliveryView {
+    width: 100%;
+    margin-top: 50px;
+    // overflow-y: scroll;
+
+    @media (max-width: $breakpoint-tablet)
+    {
+        margin-top: 20px;
+    }
+}
+
+.addressShortView{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 8px;
+    padding-top: 8px;
+}
+
+.alignCenter{
+    align-items: center;
+}
+
+.addressListView{
+    max-height: 400px;
+    padding-right: 10px;
+    padding-left: 10px;
+    overflow-y: scroll;
+    margin-top: 10px;
+}

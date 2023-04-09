@@ -79,8 +79,8 @@ function CartSummary(props) {
                 <div className='margingTopMedium columnView'>
                     {
                         ShippingTypes.map((shippingItem, index) => {
-                            return <Box key={index} sx={{display : 'flex', alignItems : 'center'}}>
-                                <Radio disabled={shippingItem.isDisabled} sx={{paddingLeft : 0}} checked={shippingItem.isSelected} />
+                            return <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
+                                <Radio disabled={shippingItem.isDisabled} sx={{ paddingLeft: 0 }} checked={shippingItem.isSelected} />
                                 <Typography sx={{ fontFamily: appFonts.montserrat, color: shippingItem.isDisabled ? appColors.grey : appColors.dark }} variant='body2'>{shippingItem.type}</Typography>
                             </Box>
                         })
@@ -89,8 +89,8 @@ function CartSummary(props) {
             </div>
 
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
-                <Button variant='contained' sx={{ fontFamily: appFonts.montserrat }}>
-                    Place Order
+                <Button color='secondary' variant='contained' sx={{ fontFamily: appFonts.montserrat }}>
+                    Next
                 </Button>
             </Box>
 
