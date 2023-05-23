@@ -4,8 +4,13 @@ import { CurrencyRupee } from '@mui/icons-material';
 import './cartSummary.scss'
 import { appFonts } from '../../../shared/appFonts';
 import { appColors } from '../../../shared/appcolors';
+import { useNavigate } from 'react-router-dom';
+import { cartDelivery, cartRoute, summaryToDelivery } from '../../Routing';
 
 function CartSummary(props) {
+
+    // Variable to handle navigation
+    const navigateTo = useNavigate();
 
     // Shipping type variable
     const ShippingTypes = [
@@ -89,7 +94,10 @@ function CartSummary(props) {
             </div>
 
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
-                <Button color='secondary' variant='contained' sx={{ fontFamily: appFonts.montserrat }}>
+                <Button
+                    onClick={() => { navigateTo(summaryToDelivery, { state: {}, replace: false }) }}
+                    color='secondary' variant='contained' sx={{ fontFamily: appFonts.montserrat }}
+                >
                     Next
                 </Button>
             </Box>

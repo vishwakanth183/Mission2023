@@ -4,13 +4,13 @@ import { appFonts } from '../../../shared/appFonts';
 import { appColors } from '../../../shared/appcolors';
 import './delivery.scss'
 import { Edit, EditLocationAlt, EditLocationAltOutlined } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import { cartSummary, deliveryToPayment, deliveryToSummary, paymentRoute } from '../../Routing';
 
 function Delivery(props) {
 
-    const userName = {
-        firstname: 'M.S',
-        lastName: 'Dhoni'
-    }
+    // variable to handle navigation
+    const navigateTo = useNavigate();
 
     const addressList = [
         {
@@ -139,8 +139,15 @@ function Delivery(props) {
                 </div>
             </Card>
 
-            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', marginTop: 5 }}>
-                <Button color='secondary' variant='contained' sx={{ fontFamily: appFonts.montserrat }}>
+            <Box sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', marginTop: 5 }}>
+                <Button
+                    onClick={() => { navigateTo(deliveryToSummary, { state: {}, replace: false }) }}
+                    color='secondary' variant='contained' sx={{ fontFamily: appFonts.montserrat, marginRight: 2 }}>
+                    Prev
+                </Button>
+                <Button
+                    onClick={() => { navigateTo(deliveryToPayment, { state: {}, replace: false }) }}
+                    color='secondary' variant='contained' sx={{ fontFamily: appFonts.montserrat }}>
                     Next
                 </Button>
             </Box>

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Stepper.scss'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
@@ -13,9 +13,13 @@ import { appFonts } from '../../../shared/appFonts';
 import CartSummary from '../CartSummary/cartSummary';
 import Cart from '../Cart/cart';
 import Delivery from '../Delivery/delivery';
+import { cartDelivery, cartSummary, deliveryToSummary, summaryToDelivery } from '../../Routing';
 
 
 function StepperComponent(props) {
+
+    // Variable to handle route location
+    const routeLocation = useLocation()
 
     // Variable to handle  stepper current position
     const [activeStepper, setCurrentStepper] = useState(0);
@@ -39,9 +43,24 @@ function StepperComponent(props) {
 
     // Variable to handle onChange stepper
     const onChangeStepper = (value) => {
-        console.log("Val",value)
+        console.log("Val", value)
         setCurrentStepper(value);
     };
+
+    useEffect(() => {
+        if (routeLocation) {
+            // console.log("routeLocation.state", routeLocation)
+            if (routeLocation.pathname == deliveryToSummary) {
+                setCurrentStepper(0);
+            }
+            else if (routeLocation.pathname == summaryToDelivery) {
+                setCurrentStepper(1);
+            }
+            else {
+                setCurrentStepper(2);
+            }
+        }
+    }, [routeLocation])
 
     return (
         <div className='stepperFullView'>
@@ -59,8 +78,8 @@ function StepperComponent(props) {
                     {
                         lables.map((item, currentIndex) => {
                             return <Step key={currentIndex} completed={currentIndex <= activeStepper}>
-                                <StepButton icon={item.icon(currentIndex <= activeStepper)} color="inherit"  onClick={()=>onChangeStepper(currentIndex)}>
-                                    <Typography sx={{ fontFamily: appFonts.montserrat, fontWeight: 'bold' , color : currentIndex <= activeStepper ? appColors.lightGreen : appColors.grey }} variant="body2">
+                                <StepButton disabled icon={item.icon(currentIndex <= activeStepper)} color="inherit" onClick={() => onChangeStepper(currentIndex)}>
+                                    <Typography sx={{ fontFamily: appFonts.montserrat, fontWeight: 'bold', color: currentIndex <= activeStepper ? appColors.lightGreen : appColors.grey }} variant="body2">
                                         {item.name}
                                     </Typography>
                                 </StepButton>
@@ -71,8 +90,8 @@ function StepperComponent(props) {
 
                 <div>
                     <Routes>
-                        {/* <Route path=':cart' element={<CartSummary />} /> */}
-                        <Route path=':cart' element={<Delivery />} />
+                        <Route path='summary' element={<CartSummary />} />
+                        <Route path='delivery' element={<Delivery />} />
                     </Routes>
                 </div>
 
